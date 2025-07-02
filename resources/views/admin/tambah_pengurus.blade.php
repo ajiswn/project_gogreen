@@ -26,11 +26,12 @@
             @csrf
             <div class="col-12">
               <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-              <input type="text" name="nama_lengkap" class="form-control" id="nama_lengkap">
+              <input type="text" name="nama_lengkap" class="form-control @error('nama_lengkap') is-invalid @enderror" id="nama_lengkap">
+              @error('nama_lengkap') <div class="invalid-feedback"> {{ $message }} </div> @enderror
             </div>
             <div class="col-12">
               <label for="foto" class="form-label">Foto</label>
-              <input type="file" name="foto" class="form-control" id="foto">
+              <input type="file" name="foto" class="form-control @error('foto') is-invalid @enderror" id="foto">
             </div>
             <div class="col-12">
               <label class="col-form-label" for>Jabatan</label>
@@ -43,11 +44,11 @@
             </div>
             <div class="col-12">
               <label for="prodi" class="form-label">Prodi</label>
-              <input type="text" name="prodi" class="form-control" id="prodi">
+              <input type="text" name="prodi" class="form-control @error('prodi') is-invalid @enderror" id="prodi">
             </div>
             <div class="col-12">
               <label for="angkatan" class="form-label">Angkatan</label>
-              <input type="text" name="angkatan" class="form-control" id="angkatan">
+              <input type="text" name="angkatan" class="form-control @error('angkatan') is-invalid @enderror" id="angkatan">
             </div>
             <div class="col-12">
               <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Simpan</button>

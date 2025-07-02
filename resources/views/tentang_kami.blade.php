@@ -62,55 +62,25 @@
 <section id="team" class="team">
     <div class="container">
 
-    <div class="section-title">
-        <h2>Strutur</h2>
-    </div>
-
-    <div class="row align-items-center justify-content-center">
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-        <div class="member">
-            <img src="{{ asset('assets/img/team/team-2.jpg') }}" alt="">
-            <h4>Sarah Jhinson</h4>
-            <span>Product Manager</span>
-        </div>
+        <div class="section-title">
+            <h2>Struktur</h2>
         </div>
 
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-        <div class="member">
-            <img src="{{ asset('assets/img/team/team-3.jpg') }}" alt="">
-            <h4>William Anderson</h4>
-            <span>CTO</span>
+        <div class="row align-items-center justify-content-center">
+            @foreach ($pengurus as $data)
+                <div class="col-lg-3 col-md-4 d-flex align-items-stretch">
+                    <div class="member">
+                        <img src="{{ asset('storage/'.$data->foto) }}" alt="">
+                        <h4>{{ $data->nama_lengkap }}</h4>
+                        <span>{{ $data->jabatan->jabatan }}</span>
+                        <div class="social">
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
-        </div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-        <div class="member">
-            <img src="{{ asset('assets/img/team/team-1.jpg') }}" alt="">
-            <h4>Walter White</h4>
-            <span>Chief Executive Officer</span>
-        </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-        <div class="member">
-            <img src="{{ asset('assets/img/team/team-2.jpg') }}" alt="">
-            <h4>Sarah Jhinson</h4>
-            <span>Product Manager</span>
-        </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-        <div class="member">
-            <img src="{{ asset('assets/img/team/team-3.jpg') }}" alt="">
-            <h4>William Anderson</h4>
-            <span>CTO</span>
-        </div>
-        </div>
-
-    </div>
 
     </div>
 </section><!-- End Team Section -->

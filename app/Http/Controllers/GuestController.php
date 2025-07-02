@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Artikel;
 use App\Models\Pendaftaran;
+use App\Models\Pengurus;
 use Carbon\Carbon;
 
 
@@ -26,7 +27,9 @@ class GuestController extends Controller
     //Menampilkan Halaman Tentang Kami (Guest)
     public function tentang_kami()
     {
-        return view('tentang_kami');
+        $pengurus = Pengurus::all();
+
+        return view('tentang_kami', compact('pengurus'));
     }
     
     //Proses Hitung Kategori

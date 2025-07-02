@@ -48,14 +48,14 @@
                 <tr>
                   <th scope="row">{{ $no }}</th>
                   <td>
-                    <img src="{{asset('storage/' . $data->foto)}}" width="80" class="img-fluid img-thumbnail" alt="{{ $data->nama_lengkap }}">
+                    <img src="{{asset('storage/' . $data->foto)}}" width="40" class="img-fluid rounded-circle" alt="{{ $data->nama_lengkap }}">
                   </td>
                   <td>{{ $data->nama_lengkap }}</td>
                   <td>{{ $data->jabatan->jabatan }}</td>
                   <td>{{ $data->angkatan }}</td>
                   <td>
                       <a title="Edit" href="{{ route('artikel.edit',$data->id) }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                      <button title="Hapus" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal" onclick="deleteAction('{{ route('artikel.destroy', $data->id) }}')">
+                      <button title="Hapus" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal" onclick="deleteAction('{{ route('pengurus.destroy', $data->id) }}')">
                         <i class="bi bi-trash3"></i>
                       </button>
                   </td>

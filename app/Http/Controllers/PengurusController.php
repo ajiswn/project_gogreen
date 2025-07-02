@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Pengurus;
 use App\Models\Jabatan;
 
@@ -23,6 +24,14 @@ class PengurusController extends Controller
 
     public function store(Request $request)
     {
+        $validatedData = $request->validate ([
+            'nama_lengkap'  => 'required|max:255',
+            'foto'          => 'required|image|mimes:jpg, png, jpeg, webp, svg',
+            'id_jabatan'    => 'required',
+            'prodi'         => 'required|max:255',
+            'angkatan'      => 'required|number'
+        ]);
+
         Pengurus::create([
             'nama_lengkap'  => $request->nama_lengkap,
             'foto'          => $request->file('foto')->store('foto-pengurus'),
@@ -53,6 +62,14 @@ class PengurusController extends Controller
 
     public function destroy(string $id)
     {
-        //
+        $pengurus = Pengurus::findOrFail($id);
+        //Hapus Gambar Artikel jika ada
+        if ($pengurus->foto) {
+            Storage::delete($pengurus->foto);
+        }
+        //Hapus Artikel
+        $pengurus->delete();
+
+        return redirect('/pengurus')->with('success','Pengurus berhasil dihapus!');
     }
 }
